@@ -1,0 +1,11 @@
+[nginx-server]
+192.168.56.2
+
+[kubernetes]
+192.168.56.3
+
+[nginx-server:vars]
+ansible_user=vagrant
+
+[kubernetes:vars]
+ansible_user=vagrant

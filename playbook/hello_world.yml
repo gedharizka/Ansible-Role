@@ -1,0 +1,6 @@
+---
+- hosts: nginx-server
+  become: true
+
+  roles:
+    - hello_world

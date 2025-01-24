@@ -1,0 +1,11 @@
+- name: Install snap if not present
+  apt:
+    name: snapd
+    state: present
+    update_cache: yes
+
+- name: Ensure MicroK8s is installed
+  snap:
+    name: microk8s
+    classic: true
+    state: present

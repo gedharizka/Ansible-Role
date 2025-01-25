@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: Gedha Rizka assist with chat GPT
+  description: Ansible role to check and install Git.
+  license: MIT
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+dependencies: []

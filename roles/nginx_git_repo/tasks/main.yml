@@ -1,0 +1,36 @@
+---
+
+- name: Clone Thanos repository
+  git:
+    repo: "https://github.com/gedharizka/Thanos.git"
+    dest: "/var/www/html/thanos"
+    version: 'master'
+    force: yes
+
+- name: Set proper permissions for Thanos files
+  file:
+    path: "/var/www/html/thanos"
+    owner: www-data
+    group: www-data
+    mode: '0755'
+    recurse: yes
+
+- name: Update Nginx configuration to serve Thanos website
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/thanos
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart Nginx
+
+- name: Enable Thanos site
+  file:
+    src: /etc/nginx/sites-available/thanos
+    dest: /etc/nginx/sites-enabled/thanos
+    state: link
+
+- name: Disable default nginx site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent

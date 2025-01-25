@@ -1,0 +1,9 @@
+---
+- name: recheck git version
+  command: git --version
+  register: git_version
+  ignore_errors: yes
+
+- name: log git version
+  debug:
+    msg: "Git version installed: {{ git_recheck_version.stdout }}"
